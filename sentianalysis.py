@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
-
 import re 
 import tweepy 
 import sys
@@ -12,26 +5,19 @@ from tweepy import OAuthHandler
 from textblob import TextBlob 
 
 class TwitterClient(object): 
-	''' 
-	Generic Twitter Class for sentiment analysis. 
-	'''
 	def __init__(self): 
-		''' 
-		Class constructor or initialization method. 
-		'''
-		# keys and tokens from the Twitter Dev Console 
-		consumer_key = 'VtffQSzE3IfTqvlzbtHVtSh3k'
-		consumer_secret = 'tOXq6ndrwa8XjuIqMX7KZZOTS7mkGQeHWSHG9aUiwe6jq4aMdF'
-		access_token = '3179330485-oUKu88RTEVo1a8qspQ0XwUvX8BVWcLjpF9gxl2G'
-		access_token_secret = 'q1VI52r3EFxTLImYfmD6F2maSHaLTTlaIQk6yEz5bBHra'
+		# keys and tokens from the Twitter Dev Console :::::::: 
+		##ENTER YOUR VALUES HERE BY COPYING FROM YOUR OWN TWITTER DEVELOPER ACCOUNT
+		consumer_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+		consumer_secret = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+		access_token = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+		access_token_secret = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 
 		# attempt authentication 
 		try: 
-			# create OAuthHandler object 
+			# create OAuthHandler object, set values for access tokens and create API object
 			self.auth = OAuthHandler(consumer_key, consumer_secret) 
-			# set access token and secret 
 			self.auth.set_access_token(access_token, access_token_secret) 
-			# create tweepy API object to fetch tweets 
 			self.api = tweepy.API(self.auth) 
 		except: 
 			print("Error: Authentication Failed") 
@@ -59,9 +45,6 @@ class TwitterClient(object):
 			return 'negative'
 
 	def get_tweets(self, query, count = 10): 
-		''' 
-		Main function to fetch tweets and parse them. 
-		'''
 		# empty list to store parsed tweets 
 		tweets = [] 
 
