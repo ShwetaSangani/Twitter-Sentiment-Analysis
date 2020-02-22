@@ -1,5 +1,13 @@
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+
 import re 
 import tweepy 
+import sys
 from tweepy import OAuthHandler 
 from textblob import TextBlob 
 
@@ -91,7 +99,10 @@ def main():
     api = TwitterClient()
     #calling function to get tweets
     topic = input("Enter a topic you want to know about: ")
-    tweets = api.get_tweets(query = topic, count = 200) 
+    tweets = api.get_tweets(query = topic, count = 1000) 
+    if len(tweets)==0:
+        print("No tweets on this topic")
+        sys.exit(0)
     # picking positive tweets from tweets 
     ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive'] 
     # percentage of positive tweets 
